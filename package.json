@@ -1,0 +1,19 @@
+{
+  "name": "chessmoves",
+  "version": "1.0.0",
+  "description": "Allows a user to know available moves given position of pieces",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saivickna/chessmoves.git"
+  },
+  "author": "Saivickna Raveendran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saivickna/chessmoves/issues"
+  },
+  "homepage": "https://github.com/saivickna/chessmoves#readme"
+}
