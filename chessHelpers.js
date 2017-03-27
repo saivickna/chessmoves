@@ -5,28 +5,30 @@ var inBounds = function(x, y) {
 module.exports = {
   rookMove: (x, y, playerPieces, opponentPieces, pieceName = 'R') => {
     var moves = [];
+
+    //ideally rewrite the code to be more functional
     var addPiece = function(pos) {
       if (playerPieces[pos]) {
-        break;
+        return true;
       } else {
         moves.push[pieceName + pos];
         if (opponentPieces[pos]) {
-          break;
+          return true;
         }
       }
     }
     let i = 0;
     for (i = x+1; i < 8; i++) {
-      addPiece(cols[i] + j);
+      if (addPiece(cols[i] + y)) break;
     }
     for (i = x-1; i >= 0; i--) {
-      addPiece(cols[i] + j);
+      if (addPiece(cols[i] + y)) break;
     }
     for (i = y+1; i < 8; i++) {
-      addPiece(cols[i] + j);
+      if (addPiece(cols[x] + i)) break;
     }
     for (i = y-1; i >= 0; i--) {
-      addPiece(cols[i] + j);
+      if (addPiece(cols[x] + i)) break;
     }
     return moves;
   },
@@ -69,22 +71,38 @@ module.exports = {
     let i = 0;
     let j = 0;
     for (i = x+1, j = y+1; i<8 && j<8; i++, j++) {
-      addPiece(cols[i] + j);
+      if (addPiece(cols[i] + j)) break;
     }
     for (i = x-1, j = y+1; i>=0 && j<8; i--, j++) {
-      addPiece(cols[i] + j);
+      if (addPiece(cols[i] + j)) break;
     }
     for (i = x+1, j = y-1; i<8 && j>=0; i++, j--) {
-      addPiece(cols[i] + j);
+      if (addPiece(cols[i] + j)) break;
     }
     for (i = x-1, j = y-1; i>=0 && j>=0; i--, j--) {
-      addPiece(cols[i] + j);
+      if (addPiece(cols[i] + j)) break;
     }
     return moves;
   },
   queenMove: function(x, y, playerPieces, opponentPieces) {
     var moves = module.exports.rookMove(x, y, playerPieces, opponentPieces, 'Q');
     moves = moves.concat(module.exports.bishopMove(x, y, playerPieces, opponentPieces, 'Q'));
+    return moves;
+  },
+  pawnMove: function(x, y, whitePieces, blackPieces, whiteBlack) {
+    var moves = [];
+    //if it is a white piece moving
+    if (whiteBlack) {
+      if (inBounds(x, y+1) && whitePieces[cols[x], y+1] === undefined && blackPieces[cols[x, y+1]] === undefined) moves.push(cols[x] + (y+1));
+      if (x === 2 && whitePieces[cols[x], y+2] === undefined && blackPieces[cols[x, y+2]] === undefined) moves.push(cols[x] + (y+2));
+      if (inBounds(x+1, y+1) && blackPieces[cols[x+1, y+1]]) moves.push(cols[x+1] + (y+1));
+      if (inBounds(x-1, y+1) && blackPieces[cols[x-1, y+1]]) moves.push(cols[x-1] + (y+1));
+    } else {
+      if (inBounds(x, y-1) && whitePieces[cols[x], y-1] === undefined && blackPieces[cols[x, y-1]] === undefined) moves.push(cols[x] + (y-1));
+      if (x === 7 && whitePieces[cols[x], y-2] === undefined && blackPieces[cols[x, y-2]] === undefined) moves.push(cols[x] + (y-2));
+      if (inBounds(x-1, y-1) && whitePieces[cols[x-1, y-1]]) moves.push(cols[x-1] + (y-1));
+      if (inBounds(x+1, y-1) && whitePieces[cols[x+1, y-1]]) moves.push(cols[x+1] + (y-1));
+    }
     return moves;
   }
 }
