@@ -13,14 +13,23 @@
   display: flex;
   flex-direction: column;
   margin-left: 5%;
+  margin-right: 5%;
 }
 .addPiece {
-  float: right;
-  margin-right: 5%;
+  /*float: right;*/
+  /*margin-right: 5%;*/
+
   display: flex;
-  width: 45%;
+  /*width: 45%;*/
   justify-content: space-between;
   align-items: flex-start;
+  margin-right: 5%;
+}
+
+.calculateTurn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5%;
 }
 
 .row {
@@ -33,4 +42,14 @@
   border-style: solid;
   cursor: pointer;
   line-height: 60px;
+  background-color: beige;
+}
+
+.black {
+  background-color: black;
+  color: white;
+}
+
+.white {
+  background-color: white;
 }
