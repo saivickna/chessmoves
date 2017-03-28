@@ -2,8 +2,8 @@ var cols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 var inBounds = function(x, y) {
   return (x >= 0) && (x < 8) && (y >= 0) && (y < 8);
 }
-var check = {
-  rookMove: (x, y, playerPieces, opponentPieces, pieceName = 'R') => {
+var move = {
+  rook: (x, y, playerPieces, opponentPieces, pieceName = 'R') => {
     var moves = [];
 
     //ideally rewrite the code to be more functional
@@ -32,7 +32,7 @@ var check = {
     }
     return moves;
   },
-  kingMove: function(x, y, playerPieces, opponentPieces) {
+  king: function(x, y, playerPieces, opponentPieces) {
     var moves = [];
     if (inBounds(x-1, y-1) && playerPieces[cols[x-1] + (y-1)] === undefined) moves.push('K' + cols[x-1] + (y-1));
     if (inBounds(x-1, y) && playerPieces[cols[x-1] + y] === undefined) moves.push('K' + cols[x-1] + y);
@@ -44,7 +44,7 @@ var check = {
     if (inBounds(x+1, y+1) && playerPieces[cols[x+1] + (y+1)] === undefined) moves.push('K' + cols[x+1] + (y+1));
     return moves;
   },
-  knightMove: function(x, y, playerPieces, opponentPieces) {
+  knight: function(x, y, playerPieces, opponentPieces) {
     var moves = [];
     if (inBounds(x+1, y+2) && playerPieces[cols[x+1] + (y+2)] === undefined) moves.push('N' + cols[x+1] + (y+2));
     if (inBounds(x+2, y+1) && playerPieces[cols[x+2] + (y+1)] === undefined) moves.push('N' + cols[x+2] + (y+1));
@@ -56,7 +56,7 @@ var check = {
     if (inBounds(x-2, y-1) && playerPieces[cols[x-2] + (y-1)] === undefined) moves.push('N' + cols[x-2] + (y-1));
     return moves;
   },
-  bishopMove: function(x, y, playerPieces, opponentPieces, pieceName = 'B') {
+  bishop: function(x, y, playerPieces, opponentPieces, pieceName = 'B') {
     var moves = [];
     var addPiece = function(pos) {
       if (playerPieces[pos]) {
@@ -84,12 +84,12 @@ var check = {
     }
     return moves;
   },
-  queenMove: function(x, y, playerPieces, opponentPieces) {
-    var moves = module.exports.rookMove(x, y, playerPieces, opponentPieces, 'Q');
-    moves = moves.concat(module.exports.bishopMove(x, y, playerPieces, opponentPieces, 'Q'));
+  queen: function(x, y, playerPieces, opponentPieces) {
+    var moves = move.rook(x, y, playerPieces, opponentPieces, 'Q');
+    moves = moves.concat(move.bishop(x, y, playerPieces, opponentPieces, 'Q'));
     return moves;
   },
-  pawnMove: function(x, y, whitePieces, blackPieces, whiteBlack) {
+  pawn: function(x, y, whitePieces, blackPieces, whiteBlack) {
     var moves = [];
     //if it is a white piece moving
     if (whiteBlack) {
