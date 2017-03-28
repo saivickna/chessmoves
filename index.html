@@ -14,7 +14,7 @@
     <div class="addPiece">
       <div>
         <label>Piece: </label>
-        <select id="piecSelect">
+        <select id="pieceSelect">
           <option value="King">King</option>
           <option value="Queen">Queen</option>
           <option value="Bishop">Bishop</option>
@@ -50,10 +50,22 @@
         </select>
       </div>
       <div>        
-        <input type="radio" name="player" value="White"> White<br>
-        <input type="radio" name="player" value="Black"> Black<br>
+        <input type="radio" name="player" value="white" checked="checked"> White<br>
+        <input type="radio" name="player" value="black"> Black
       </div>
-      <button>Add</button>
+      <button id='add'>Add</button>
+    </div>
+    <div class="calculateTurn">
+        <div>  
+          <div style="display: inline">Player Turn: </div>   
+          <input type="radio" name="calculatePlayer" value="white" checked="checked"> White
+          <input type="radio" name="calculatePlayer" value="black"> Black
+
+        </div>
+        <button id='add'>Calculate Possible Moves</button>
+    </div>
+    <div>
+      <ul></ul>
     </div>
     <script src="app.js"></script>
   </body>
