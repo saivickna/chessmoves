@@ -60,12 +60,14 @@
           <div style="display: inline">Player Turn: </div>   
           <input type="radio" name="calculatePlayer" value="white" checked="checked"> White
           <input type="radio" name="calculatePlayer" value="black"> Black
-
         </div>
-        <button id='add'>Calculate Possible Moves</button>
+        <button id='calculate'>Calculate Possible Moves</button>
     </div>
-    <div>
-      <ul></ul>
+    <br/>
+    <h2>Move List:</h2>
+    <br/>
+    <div class="moveList">
+      <ul id="moveList"></ul>
     </div>
     <script src="app.js"></script>
   </body>
