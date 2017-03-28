@@ -11,7 +11,7 @@ var move = {
       if (playerPieces[pos]) {
         return true;
       } else {
-        moves.push[pieceName + pos];
+        moves.push(pieceName + pos);
         if (opponentPieces[pos]) {
           return true;
         }
@@ -60,11 +60,11 @@ var move = {
     var moves = [];
     var addPiece = function(pos) {
       if (playerPieces[pos]) {
-        break;
+        return true;
       } else {
-        moves.push[pieceName + pos];
+        moves.push(pieceName + pos);
         if (opponentPieces[pos]) {
-          break;
+          return true;
         }
       }
     }
@@ -93,15 +93,19 @@ var move = {
     var moves = [];
     //if it is a white piece moving
     if (whiteBlack) {
-      if (inBounds(x, y+1) && whitePieces[cols[x], y+1] === undefined && blackPieces[cols[x, y+1]] === undefined) moves.push(cols[x] + (y+1));
-      if (x === 2 && whitePieces[cols[x], y+2] === undefined && blackPieces[cols[x, y+2]] === undefined) moves.push(cols[x] + (y+2));
-      if (inBounds(x+1, y+1) && blackPieces[cols[x+1, y+1]]) moves.push(cols[x+1] + (y+1));
-      if (inBounds(x-1, y+1) && blackPieces[cols[x-1, y+1]]) moves.push(cols[x-1] + (y+1));
+      if (inBounds(x, y+1) && whitePieces[cols[x] + (y+1)] === undefined && blackPieces[cols[x] + (y+1)] === undefined) {
+        moves.push(cols[x] + (y+1));
+        if (x === 1 && whitePieces[cols[x] + (y+2)] === undefined && blackPieces[cols[x] + (y+2)] === undefined) moves.push(cols[x] + (y+2));
+      } 
+      if (inBounds(x+1, y+1) && blackPieces[cols[x+1] + (y+1)]) moves.push(cols[x+1] + (y+1));
+      if (inBounds(x-1, y+1) && blackPieces[cols[x-1] + (y+1)]) moves.push(cols[x-1] + (y+1));
     } else {
-      if (inBounds(x, y-1) && whitePieces[cols[x], y-1] === undefined && blackPieces[cols[x, y-1]] === undefined) moves.push(cols[x] + (y-1));
-      if (x === 7 && whitePieces[cols[x], y-2] === undefined && blackPieces[cols[x, y-2]] === undefined) moves.push(cols[x] + (y-2));
-      if (inBounds(x-1, y-1) && whitePieces[cols[x-1, y-1]]) moves.push(cols[x-1] + (y-1));
-      if (inBounds(x+1, y-1) && whitePieces[cols[x+1, y-1]]) moves.push(cols[x+1] + (y-1));
+      if (inBounds(x, y-1) && whitePieces[cols[x] + (y-1)] === undefined && blackPieces[cols[x] + (y-1)] === undefined) {
+        moves.push(cols[x] + (y-1));
+        if (x === 6 && whitePieces[cols[x] + (y-2)] === undefined && blackPieces[cols[x] + (y-2)] === undefined) moves.push(cols[x] + (y-2));
+      } 
+      if (inBounds(x-1, y-1) && whitePieces[cols[x-1] + (y-1)]) moves.push(cols[x-1] + (y-1));
+      if (inBounds(x+1, y-1) && whitePieces[cols[x+1] + (y-1)]) moves.push(cols[x+1] + (y-1));
     }
     return moves;
   }
