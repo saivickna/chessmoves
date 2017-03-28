@@ -1,0 +1,36 @@
+.title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.column {
+  display: flex;
+  flex-direction: row;
+}
+
+#board {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+.addPiece {
+  float: right;
+  margin-right: 5%;
+  display: flex;
+  width: 45%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.row {
+  width: 60px;
+  height: 60px;
+  border-color: black;
+  text-align: center;
+  vertical-align: middle;
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+  line-height: 60px;
+}

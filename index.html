@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chess Moves</title>
+    <script src="chessHelpers.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="title">Chess Moves</div>
+    <div id="board"></div>
+    <div class="addPiece">
+      <div>
+        <label>Piece: </label>
+        <select id="piecSelect">
+          <option value="King">King</option>
+          <option value="Queen">Queen</option>
+          <option value="Bishop">Bishop</option>
+          <option value="Rook">Rook</option>
+          <option value="Knight">Knight</option>
+          <option value="Pawn">Pawn</option>
+        </select>
+      </div>
+      <div>
+        <label>Column: </label>
+        <select id="columnSelect">
+          <option value="a">a</option>
+          <option value="b">b</option>
+          <option value="c">c</option>
+          <option value="d">d</option>
+          <option value="e">e</option>
+          <option value="f">f</option>
+          <option value="g">g</option>
+          <option value="h">h</option>
+        </select>
+      </div>
+      <div>
+        <label>Row: </label>
+        <select id="rowSelect">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+      </div>
+      <div>        
+        <input type="radio" name="player" value="White"> White<br>
+        <input type="radio" name="player" value="Black"> Black<br>
+      </div>
+      <button>Add</button>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
