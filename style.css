@@ -53,3 +53,14 @@
 .white {
   background-color: white;
 }
+
+.moveList {
+  height: 300px;
+  overflow-y: auto;
+}
+#moveList {
+  columns: 3;
+  list-style-position: inside;
+
+}
+
