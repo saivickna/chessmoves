@@ -2,7 +2,7 @@ var cols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 var inBounds = function(x, y) {
   return (x >= 0) && (x < 8) && (y >= 0) && (y < 8);
 }
-module.exports = {
+var check = {
   rookMove: (x, y, playerPieces, opponentPieces, pieceName = 'R') => {
     var moves = [];
 
@@ -55,7 +55,7 @@ module.exports = {
     if (inBounds(x-1, y-2) && playerPieces[cols[x-1] + (y-2)] === undefined) moves.push('N' + cols[x-1] + (y-2));
     if (inBounds(x-2, y-1) && playerPieces[cols[x-2] + (y-1)] === undefined) moves.push('N' + cols[x-2] + (y-1));
     return moves;
-  }
+  },
   bishopMove: function(x, y, playerPieces, opponentPieces, pieceName = 'B') {
     var moves = [];
     var addPiece = function(pos) {
